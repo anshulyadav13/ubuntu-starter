@@ -80,15 +80,15 @@ else
 fi
 
 # Install Slack
-echo -e "\n${BOLD}Installing Slack...${NC}"
-if ! is_installed "slack-desktop"; then
-    wget https://downloads.slack-edge.com/releases/linux/4.35.126/prod/x64/slack-desktop-4.35.126-amd64.deb
-    apt-get install -y ./slack-desktop-4.35.126-amd64.deb
-    rm slack-desktop-4.35.126-amd64.deb
-    log_installation "Slack"
-else
-    echo -e "${GREEN}Slack already installed${NC}"
-fi
+# echo -e "\n${BOLD}Installing Slack...${NC}"
+# if ! is_installed "slack-desktop"; then
+#     wget https://downloads.slack-edge.com/releases/linux/4.35.126/prod/x64/slack-desktop-4.35.126-amd64.deb
+#     apt-get install -y ./slack-desktop-4.35.126-amd64.deb
+#     rm slack-desktop-4.35.126-amd64.deb
+#     log_installation "Slack"
+# else
+#     echo -e "${GREEN}Slack already installed${NC}"
+# fi
 
 # Install DBeaver CE
 echo -e "\n${BOLD}Installing DBeaver CE...${NC}"
@@ -368,7 +368,6 @@ check_redis() {
 echo -e "\n${BOLD}Development Tools:${NC}"
 check_command git && echo -e "${GREEN}✓ Git $(git --version)${NC}" || echo -e "${RED}✗ Git not found${NC}"
 [ -f "/usr/bin/google-chrome" ] && echo -e "${GREEN}✓ Chrome$(google-chrome --version)${NC}" || echo -e "${RED}✗ Chrome not found${NC}"
-[ -f "/usr/bin/slack" ] && echo -e "${GREEN}✓ Slack${NC}" || echo -e "${RED}✗ Slack not found${NC}"
 check_command dbeaver && echo -e "${GREEN}✓ DBeaver${NC}" || echo -e "${RED}✗ DBeaver not found${NC}"
 snap list | grep -q postman && echo -e "${GREEN}✓ Postman${NC}" || echo -e "${RED}✗ Postman not found${NC}"
 check_command code && echo -e "${GREEN}✓ VSCode$(code --version | head -n1)${NC}" || echo -e "${RED}✗ VSCode not found${NC}"
